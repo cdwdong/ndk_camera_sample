@@ -31,7 +31,6 @@ find_library( # Sets the name of the path variable.
         # Specifies the name of the NDK library that
         # you want CMake to locate.
         log)
-
 find_package(OpenCV 4.1 REQUIRED java)
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
@@ -43,4 +42,8 @@ target_link_libraries( # Specifies the target library.
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})
-target_link_libraries(native-lib ${OpenCV_LIBRARIES})
+target_link_libraries(native-lib
+                    android
+                    log
+                    GLESv2
+                    ${OpenCV_LIBRARIES})

@@ -1,19 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <org.opencv.android.JavaCamera2View
-        android:id="@+id/cv_view1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
 
-</android.support.constraint.ConstraintLayout>
+        android:id="@+id/fl_camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <!--        <SurfaceView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+
+        <!--            android:layout_gravity="center">-->
+
+        <!--        </SurfaceView>-->
+        <Button
+            android:id="@+id/btn_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical" />
+
+        <Button
+            android:id="@+id/btn_capture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:text="Pick" />
+
+        <RadioGroup
+            android:id="@+id/filter_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#A7FFEB"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/default_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Default" />
+
+            <RadioButton
+                android:id="@+id/canny_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Canny" />
+
+            <RadioButton
+                android:id="@+id/blur_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blur" />
+
+            <RadioButton
+                android:id="@+id/embose_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Embose" />
+
+            <RadioButton
+                android:id="@+id/sketch_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sketch" />
+        </RadioGroup>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

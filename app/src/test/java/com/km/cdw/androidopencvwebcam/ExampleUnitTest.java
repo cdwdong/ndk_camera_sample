@@ -1,4 +1,4 @@
-package com.km.cdw.ndkcamerasample;
+package com.km.cdw.androidopencvwebcam;
 
 import org.junit.Test;
 
