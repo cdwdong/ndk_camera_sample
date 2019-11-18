@@ -13,3 +13,13 @@ ImageReader를 Camera2 API에 등록시켜서 받아온 이미지 SurfaceView에
 ![3](./mdImage/3.PNG)
 ![4](./mdImage/4.PNG)
 ![5](./mdImage/5.PNG)
+
+
+
+![5](./mdImage/Screenshot_2019-11-07_153255.jpg)
+![5](./mdImage/Screenshot_2019-11-07_153315.jpg)
+![5](./mdImage/Screenshot_2019-11-11_164735.jpg)
+![5](./mdImage/Screenshot_2019-11-11_164748.jpg)
+![5](./mdImage/Screenshot_2019-11-11_164805.jpg)
+![5](./mdImage/Screenshot_2019-11-11_164809.jpg)
+![5](./mdImage/Screenshot_2019-11-11_164811.jpg)
