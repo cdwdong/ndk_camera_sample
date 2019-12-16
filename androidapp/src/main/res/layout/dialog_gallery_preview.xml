@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="48dp"
+            android:layout_gravity="start"
+            android:background="#FFFFFF"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14dp"
+
+            android:text="TextView"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:layout_margin="4dp"
+            android:background="#FFFFFF"
+            android:textColor="@color/colorPrimaryDark"
+
+            android:text="Button"/>
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="6dp"
+        android:layout_weight="10"
+        android:src="@drawable/ic_loading_icon"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="start"
+            android:layout_margin="4dp"
+            android:background="#FFFFFF"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Button"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:layout_margin="4dp"
+            android:background="#FFFFFF"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Button"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:layout_margin="4dp"
+            android:background="#FFFFFF"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Button"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

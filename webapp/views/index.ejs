@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <style>
+      body {
+        padding-top: 70px;
+        padding-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-3"><%= title %></h1>
+          <p class="lead"><%= title %> 에서 카메라를 제어해보세요</p>
+        </div>      
+        <br>
+        <!-- <div class="container">
+          <%- include("body",{}) %>
+        </div> -->
+        <%- include("body", {}) %>
+      </div>
+    </div>    
+  </body>
+</html>

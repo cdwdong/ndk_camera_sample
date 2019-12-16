@@ -1,0 +1,152 @@
+<style>
+  /* remove button shadow */
+  .btn.active.focus,
+  .btn.active:focus,
+  .btn.focus,
+  .btn.focus:active,
+  .btn:active:focus,
+  .btn:focus {
+    outline: 0;
+    outline-offset: 0;
+    background-image: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+</style>
+
+<form class="w-90">
+  <div class="container">
+    <blockquote class="blockquote">
+      <p class="mb-0">Cam Actions</p>
+    </blockquote>
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h4 class="card-title">Cam View</h4>
+          <img id="capture-view" class="align-middle" width="352" height="240"/>
+          <br><br>
+          <button id="button-capture" type="button" class="btn btn-danger">Capture</button>
+        </li>
+        <li class="list-group-item">
+          <h4 class="card-title">Sample Video</h4>
+          <video class="align-middle" width="352" height="240" controls autoplay>
+            <source src="/images/20191216_102751.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <br><br>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <blockquote class="blockquote">
+      <p class="mb-0">Cam Settings</p>
+    </blockquote>
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h3 class="card-title">Cam Filter</h3> 
+          <div id='group_filter' class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-primary active">
+              <input type="radio" name="filter" value="filter_default" autocomplete="off" checked> Default
+            </label>
+            <label class="btn btn-outline-primary">
+              <input type="radio" name="filter" value="filter_canny" autocomplete="off"> Canny
+            </label>
+            <label class="btn btn-outline-primary">
+              <input type="radio" name="filter" value="filter_blur" autocomplete="off"> Blur
+            </label>
+            <label class="btn btn-outline-primary">
+              <input type="radio" name="filter" value="filter_embose" autocomplete="off"> Embose
+            </label>
+            <label class="btn btn-outline-primary">
+              <input type="radio" name="filter" value="filter_sketch" autocomplete="off"> Sketch
+            </label>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <h3 class="card-title">Cam Detect</h3> 
+          <div id='group_detect' class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-success active">
+              <input type="radio" name="detect" value="detect_default" autocomplete="off" checked> Default
+            </label>
+            <label class="btn btn-outline-success">
+              <input type="radio" name="detect" value="detect_face" autocomplete="off"> Face
+            </label>
+            <label class="btn btn-outline-success">
+              <input type="radio" name="detect" value="detect_body" autocomplete="off"> Body
+            </label>
+            <label class="btn btn-outline-success">
+              <input type="radio" name="detect" value="detect_eyes" autocomplete="off"> Eyes
+            </label>
+          </div>
+          <br><br>
+          <button id="button-apply" type="button" class="btn btn-danger">Apply</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  
+  <div id="notify" style="display:none;"></div>
+</form>
+
+<script>
+  $(function () {
+    var socket = io();
+    socket.on("connect", function() {
+      socket.emit("request get setting data");
+    });    
+    socket.on("response setting data", function (data) {
+      if(data.status) {
+        $("#notify").text("REQUEST STATUS: FAIL");
+        return false;
+      }
+      console.log("receive data: " + data.filter + ", " + data.detect);
+      $("#notify").text("REQUEST STATUS: SUCCESS");
+      UiManager.changeUiData(data);
+    });
+    socket.on("setting data change", function (data) {
+      if(data.status) {
+        $("#notify").text("REQUEST STATUS: FAIL");
+        return false;
+      }
+      $("#notify").text("REQUEST STATUS: SUCCESS");
+      UiManager.changeUiData(data);
+    });
+    socket.on("response send picture", function (data) {
+      if(data.status) {
+        $("#notify").text("REQUEST STATUS: FAIL");
+        return false;
+      }
+      $("#capture-view").attr("src", "data:image/jpeg;base64," + data.picture_data);
+
+    })
+
+    $("#button-apply").click(function (e) {
+      SockManager.reqPost(socket, UiManager.getUiData());
+    });
+    $("#button-capture").click(function (e) {
+      SockManager.reqCapture(socket);
+    });
+  });
+  var UiManager = {
+    changeUiData: function (data) {
+      $("input:radio[name=filter][value=\""+data.filter+"\"]").click();
+      $("input:radio[name=detect][value=\""+data.detect+"\"]").click();
+    },
+    getUiData: function () {
+      return  { 
+        filter: $("input:radio[name=filter]:checked").val(),
+        detect: $("input:radio[name=detect]:checked").val()
+      };
+    }
+  }
+  var SockManager = {
+    reqPost: function (socket, data) {
+      socket.emit("request post setting data", data);
+    },
+    reqCapture: function (socket) {
+      socket.emit("request capture camera");
+    }
+  };
+</script>

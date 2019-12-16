@@ -1,0 +1,113 @@
+<div class="w-90" id="body">
+  <p>
+    <div>
+      <h2> cam filter </h2>
+    </div>    
+    <form id="filter-form">
+      <label draggable="false"><input type="radio" name="filter" value="filter_default" checked="checked"/> default </label>
+      <label draggable="false"><input type="radio" name="filter" value="filter_canny"/> canny </label>
+      <label draggable="false"><input type="radio" name="filter" value="filter_blur"/> blur </label>
+      <label draggable="false"><input type="radio" name="filter" value="filter_embose"/> embose </label>
+      <label draggable="false"><input type="radio" name="filter" value="filter_sketch"/> sketch </label>
+    </form>
+  </p>
+        
+  <p>
+    <div>
+      <h2> cam detect </h2>
+    </div>
+    <form id="detect-form">
+      <label draggable="false"><input type="radio" name="detect" value="detect_default" checked="checked"/> default </label>
+      <label draggable="false"><input type="radio" name="detect" value="detect_face"/> face </label>
+      <label draggable="false"><input type="radio" name="detect" value="detect_body"/> body </label>
+      <label draggable="false"><input type="radio" name="detect" value="detect_eyes"/> eyes </label>
+    </form>
+  </p>
+  <p>
+    <button id="button-apply">apply</button>
+  </p>
+</div>
+<div id="notify"></div>
+
+<script>
+  $(function () {
+    var socket = io();
+    // $("#filter-form").change(function (e) {
+    //   e.preventDefault();
+    //   socket.emit("filter setting message", $("input:radio[name=filter]:checked").val());
+    //   return false;
+    // });
+    // $("#detect-form").change(function (e) {
+    //   e.preventDefault();
+    //   socket.emit("detect setting message", $("input:radio[name=detect]:checked").val());
+    //   return false;
+    // });
+    socket.emit("request get setting data");
+    socket.on("response setting data", function (data) {
+      if(data.status) {
+        $("#notify").text("REQUEST STATUS: FAIL");
+        return false;
+      }
+      console.log("receive data: " + data.filter + ", " + data.detect);
+      $("#notify").text("REQUEST STATUS: SUCCESS");
+      UiManager.changeUiData(data);
+    });
+    socket.on("setting data change", function (data) {
+      if(data.status) {
+        $("#notify").text("REQUEST STATUS: FAIL");
+        return false;
+      }
+      $("#notify").text("REQUEST STATUS: SUCCESS");
+      UiManager.changeUiData(data);
+    });
+
+    $("#button-apply").click(function (e) {
+      SockManager.reqPost(socket, UiManager.getUiData());
+    });
+  });
+  var UiManager = {
+    changeUiData: function (data) {
+      $("input:radio[name=filter][value=\""+data.filter+"\"]").prop('checked', true);
+      $("input:radio[name=detect][value=\""+data.detect+"\"]").prop('checked', true);
+    },
+    getUiData: function () {
+      return  { 
+        filter: $("input:radio[name=filter]:checked").val(),
+        detect: $("input:radio[name=detect]:checked").val()
+      };
+    }
+  }
+  var SockManager = {
+    reqPost: function (socket, data) {
+        socket.emit("request post setting data", data);
+    }  
+  };
+
+
+
+  // $(function() {
+  //   $.get("/setting", function(data, status, JQxhr) {
+  //     if(data.status) {
+  //       $("#notify").text("GET STATUS: FAIL");
+  //       return false;
+  //     }
+  //     $("#notify").text("GET STATUS: SUCCESS");
+  //     $("input:radio[name=filter][value=\""+data.filter+"\"]").prop('checked', true);
+  //     $("input:radio[name=detect][value=\""+data.detect+"\"]").prop('checked', true);
+      
+  //   }, "JSON")
+  // })
+  // $("#button-apply").click(function (e) {
+  //   $.post("/setting", { 
+  //       filter: $("input:radio[name=filter]:checked").val(),
+  //       detect: $("input:radio[name=detect]:checked").val()
+  //     }, function (data, status, JQxhr) {
+  //         if(data.status) {
+  //         $("#notify").text("POST STATUS: FAIL");
+  //         return false;
+  //       }
+  //       $("#notify").text("POST STATUS: SUCCESS");
+  //     });
+  // });
+  
+</script>

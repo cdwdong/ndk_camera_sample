@@ -1,0 +1,40 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+    <string-array name="effect_entries">
+        <item>Default</item>
+        <item>Canny</item>
+        <item>Blur</item>
+        <item>Embose</item>
+        <item>Sketch</item>
+    </string-array>
+    <string-array name="effect_values">
+        <item>filter_default</item>
+        <item>filter_canny</item>
+        <item>filter_blur</item>
+        <item>filter_embose</item>
+        <item>filter_sketch</item>
+    </string-array>
+    <string-array name="detector_entries">
+        <item>Default</item>
+        <item>Face</item>
+        <item>Body</item>
+        <item>Eyes</item>
+    </string-array>
+    <string-array name="detector_values">
+        <item>detect_default</item>
+        <item>detect_face</item>
+        <item>detect_body</item>
+        <item>detect_eyes</item>
+    </string-array>
+
+</resources>
