@@ -8,18 +8,19 @@ ImageReader를 Camera2 API에 등록시켜서 받아온 이미지 SurfaceView에
 문제가 될까봐 샘플만 올렸습니다.
 
 - 실행 사진
-![1](./mdImage/1.PNG)
-![2](./mdImage/2.PNG)
-![3](./mdImage/3.PNG)
-![4](./mdImage/4.PNG)
-![5](./mdImage/5.PNG)
+![1](./mdImage/Screenshot_2019-12-10_123443.jpg)
+![2](./mdImage/Screenshot_2019-12-10_123449.jpg)
+![3](./mdImage/Screenshot_2019-12-10_123453.jpg)
+![4](./mdImage/Screenshot_2019-12-10_123458.jpg)
+![5](./mdImage/Screenshot_2019-12-10_123502.jpg)
+![5](./mdImage/Screenshot_2019-12-10_123557.jpg)
 
 
+![5](./mdImage/Screenshot_2019-12-10_123702.jpg)
+![5](./mdImage/Screenshot_2019-12-10_123705.jpg)
+![5](./mdImage/Screenshot_2019-12-10_123707.jpg)
+![5](./mdImage/Screenshot_2019-12-10_123715.jpg)
+![5](./mdImage/Screenshot_2019-12-10_123717.jpg)
 
-![5](./mdImage/Screenshot_2019-11-07_153255.jpg)
-![5](./mdImage/Screenshot_2019-11-07_153315.jpg)
-![5](./mdImage/Screenshot_2019-11-11_164735.jpg)
-![5](./mdImage/Screenshot_2019-11-11_164748.jpg)
-![5](./mdImage/Screenshot_2019-11-11_164805.jpg)
-![5](./mdImage/Screenshot_2019-11-11_164809.jpg)
-![5](./mdImage/Screenshot_2019-11-11_164811.jpg)
+
+![5](./mdImage/웹.PNG)
