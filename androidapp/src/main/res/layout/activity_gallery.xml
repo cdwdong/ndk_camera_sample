@@ -34,21 +34,20 @@
             android:textSize="30dp"
             android:textColor="@android:color/white"
             android:text="Gallery"/>
-
-        <!-- 가로로 우선적으로 추가하는 그리드뷰 -->
-        <GridView
-            android:id="@+id/gridView_gallery"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:columnWidth="90dp"
-            android:gravity="center"
-            android:horizontalSpacing="10dp"
-            android:numColumns="auto_fit"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="10dp"
-            android:layout_marginTop="60dp"
-            android:background="@android:color/white"/>
     </RelativeLayout>
+    <!-- 가로로 우선적으로 추가하는 그리드뷰 -->
+    <GridView
+        android:id="@+id/gridView_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+        android:layout_marginTop="60dp"
+        android:background="@android:color/white"/>
 
 
 
